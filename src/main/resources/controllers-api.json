@@ -1,0 +1,1058 @@
+{
+swagger: "2.0",
+info: {
+description: "Api Documentation",
+version: "1.0",
+title: "Api Documentation",
+termsOfService: "urn:tos",
+contact: { },
+license: {
+name: "Apache 2.0",
+url: "http://www.apache.org/licenses/LICENSE-2.0"
+}
+},
+host: "localhost:8080",
+basePath: "/",
+tags: [
+{
+name: "admin-controller",
+description: "Admin Controller"
+},
+{
+name: "company-controller",
+description: "Company Controller"
+},
+{
+name: "customer-controller",
+description: "Customer Controller"
+}
+],
+paths: {
+/adminController/addcompany: {
+put: {
+tags: [
+"admin-controller"
+],
+summary: "addCompany",
+operationId: "addCompanyUsingPUT",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+in: "body",
+name: "company",
+description: "company",
+required: true,
+schema: {
+$ref: "#/definitions/Company"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/addcustomer: {
+put: {
+tags: [
+"admin-controller"
+],
+summary: "Add customer to DB if not exist already",
+operationId: "addCustomerUsingPUT",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+in: "body",
+name: "customer",
+description: "customer",
+required: true,
+schema: {
+$ref: "#/definitions/Customer"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/deletecompany: {
+delete: {
+tags: [
+"admin-controller"
+],
+summary: "Deleting company from the DB and all the related coupons",
+operationId: "deleteCompanyUsingDELETE",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "companyId",
+in: "query",
+description: "companyId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+204: {
+description: "No Content"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+}
+},
+deprecated: false
+}
+},
+/adminController/deletecustomer: {
+delete: {
+tags: [
+"admin-controller"
+],
+summary: "Deleting specific customer from the DB by ID",
+operationId: "deleteCustomerUsingDELETE",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "customerId",
+in: "query",
+description: "customerId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+204: {
+description: "No Content"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+}
+},
+deprecated: false
+}
+},
+/adminController/getallcompanies: {
+get: {
+tags: [
+"admin-controller"
+],
+summary: "Return list of all companies in the DB",
+operationId: "getAllCompaniesUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/getallcustomers: {
+get: {
+tags: [
+"admin-controller"
+],
+summary: " Get list of all customers from the DB",
+operationId: "getAllCustomersUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/getcompanybyid: {
+get: {
+tags: [
+"admin-controller"
+],
+summary: "get one specific company from the DB by the company ID",
+operationId: "getOneCompanyUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "companyId",
+in: "query",
+description: "companyId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/getcustomerbyid: {
+get: {
+tags: [
+"admin-controller"
+],
+summary: "Get specific customer from the DB by customer ID",
+operationId: "getCustomerByIdUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "id",
+in: "query",
+description: "id",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/updateCompany: {
+post: {
+tags: [
+"admin-controller"
+],
+summary: "Update compnay in the DB ",
+operationId: "updateCompanyUsingPOST",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+in: "body",
+name: "company",
+description: "company",
+required: true,
+schema: {
+$ref: "#/definitions/Company"
+}
+},
+{
+name: "companyId",
+in: "query",
+description: "companyId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/adminController/updatecustomer: {
+post: {
+tags: [
+"admin-controller"
+],
+summary: "Update the cutomer in the DB",
+operationId: "updateCustoemrUsingPOST",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "custmerId",
+in: "query",
+description: "custmerId",
+required: true,
+type: "integer",
+format: "int32"
+},
+{
+in: "body",
+name: "customer",
+description: "customer",
+required: true,
+schema: {
+$ref: "#/definitions/Customer"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/addCoupon: {
+put: {
+tags: [
+"company-controller"
+],
+summary: "addCoupon",
+operationId: "addCouponUsingPUT",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+in: "body",
+name: "coupon",
+description: "coupon",
+required: true,
+schema: {
+$ref: "#/definitions/Coupon"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/deleteCoupon: {
+delete: {
+tags: [
+"company-controller"
+],
+summary: "deleteCoupon",
+operationId: "deleteCouponUsingDELETE",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "couponId",
+in: "query",
+description: "couponId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+204: {
+description: "No Content"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+}
+},
+deprecated: false
+}
+},
+/companyController/getAllCoupons: {
+get: {
+tags: [
+"company-controller"
+],
+summary: "getAllCoupons",
+operationId: "getAllCouponsUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/getAllCouponsFromCategory/{category}/{companyId}: {
+get: {
+tags: [
+"company-controller"
+],
+summary: "getAllCouponsFromCategory",
+operationId: "getAllCouponsFromCategoryUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "category",
+in: "query",
+description: "category",
+required: true,
+type: "string",
+enum: [
+"FOOD",
+"ELECTRICITY",
+"FESTIVALS",
+"EVENTS",
+"MOBILE",
+"CLOTHES",
+"CARS",
+"OUTDOOR",
+"CAR",
+"HATS"
+]
+},
+{
+name: "companyId",
+in: "query",
+description: "companyId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/getAllCouponsFromCategory/{maxPrice}: {
+get: {
+tags: [
+"company-controller"
+],
+summary: "getAllCouponsByMaxPrice",
+operationId: "getAllCouponsByMaxPriceUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "maxPrice",
+in: "query",
+description: "maxPrice",
+required: true,
+type: "number",
+format: "double"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/getCompanyInfo: {
+get: {
+tags: [
+"company-controller"
+],
+summary: "getCompanyInfo",
+operationId: "getCompanyInfoUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/companyController/updateCoupon: {
+post: {
+tags: [
+"company-controller"
+],
+summary: "updateCoupon",
+operationId: "updateCouponUsingPOST",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+in: "body",
+name: "coupon",
+description: "coupon",
+required: true,
+schema: {
+$ref: "#/definitions/Coupon"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/customerController/getCustomerCoupons: {
+get: {
+tags: [
+"customer-controller"
+],
+summary: "getCustomerCoupons",
+operationId: "getCustomerCouponsUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/customerController/getCustomerCouponsByCategory: {
+get: {
+tags: [
+"customer-controller"
+],
+summary: "getCustomerCouponsByCategory",
+operationId: "getCustomerCouponsByCategoryUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "category",
+in: "query",
+description: "category",
+required: true,
+type: "string",
+enum: [
+"FOOD",
+"ELECTRICITY",
+"FESTIVALS",
+"EVENTS",
+"MOBILE",
+"CLOTHES",
+"CARS",
+"OUTDOOR",
+"CAR",
+"HATS"
+]
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/customerController/getCustomerCouponsByMaxPrice: {
+get: {
+tags: [
+"customer-controller"
+],
+summary: "getCustomerCouponsByMaxPrice",
+operationId: "getCustomerCouponsByMaxPriceUsingGET",
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "maxPrice",
+in: "query",
+description: "maxPrice",
+required: true,
+type: "number",
+format: "double"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/customerController/getCustomerInfo: {
+get: {
+tags: [
+"customer-controller"
+],
+summary: "getCustomerInfo",
+operationId: "getCustomerInfoUsingGET",
+produces: [
+"*/*"
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+},
+/customerController/purchaseCoupon: {
+put: {
+tags: [
+"customer-controller"
+],
+summary: "purchaseCoupon",
+operationId: "purchaseCouponUsingPUT",
+consumes: [
+"application/json"
+],
+produces: [
+"*/*"
+],
+parameters: [
+{
+name: "couponId",
+in: "query",
+description: "couponId",
+required: true,
+type: "integer",
+format: "int32"
+},
+{
+name: "customerId",
+in: "query",
+description: "customerId",
+required: true,
+type: "integer",
+format: "int32"
+}
+],
+responses: {
+200: {
+description: "OK",
+schema: {
+type: "object"
+}
+},
+201: {
+description: "Created"
+},
+401: {
+description: "Unauthorized"
+},
+403: {
+description: "Forbidden"
+},
+404: {
+description: "Not Found"
+}
+},
+deprecated: false
+}
+}
+},
+definitions: {
+Company: {
+type: "object",
+properties: {
+couponsSet: {
+type: "array",
+items: {
+$ref: "#/definitions/Coupon"
+}
+},
+email: {
+type: "string"
+},
+name: {
+type: "string"
+},
+password: {
+type: "string"
+}
+},
+title: "Company"
+},
+Coupon: {
+type: "object",
+properties: {
+amount: {
+type: "integer",
+format: "int32"
+},
+category: {
+type: "string",
+enum: [
+"FOOD",
+"ELECTRICITY",
+"FESTIVALS",
+"EVENTS",
+"MOBILE",
+"CLOTHES",
+"CARS",
+"OUTDOOR",
+"CAR",
+"HATS"
+]
+},
+categoryString: {
+type: "string"
+},
+company: {
+type: "integer",
+format: "int32"
+},
+companyId: {
+type: "integer",
+format: "int32"
+},
+description: {
+type: "string"
+},
+endDate: {
+type: "string",
+format: "date"
+},
+image: {
+type: "string"
+},
+price: {
+type: "number",
+format: "double"
+},
+startDate: {
+type: "string",
+format: "date"
+},
+title: {
+type: "string"
+}
+},
+title: "Coupon"
+},
+Customer: {
+type: "object",
+properties: {
+customerCoupon: {
+type: "array",
+items: {
+$ref: "#/definitions/Coupon"
+}
+},
+email: {
+type: "string"
+},
+firstName: {
+type: "string"
+},
+lastName: {
+type: "string"
+},
+password: {
+type: "string"
+}
+},
+title: "Customer"
+}
+}
+}
